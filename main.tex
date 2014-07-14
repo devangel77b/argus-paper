@@ -11,7 +11,7 @@
 
 \title{Fun things you can do with a bunch of GoPros}
 
-\author[1,2]{Brandon Jackson}
+\author[1,2]{Brandon Jackson \thanks{author for correspondence: brandon.e.jackson@gmail.com}}
 \author[2]{Dennis Evangelista}
 \author[2]{Ty Hedrick}
 \affil[1]{Longwood College, Charlottesville, VA}
@@ -36,7 +36,16 @@ Ecological, behavioral, and biomechanical studies often need to quantify movemen
 
 \section*{Introduction}
 
-Introduction here. A citation here \citep{Theriault:2014}. 
+Introduction here. Citations here \citep{Theriault:2014, Bradski:2004}. 
+
+3D reconstruction of position is an important technique that can be used to quantitatively study (STUFF).  For example (STUFF, Citations). As cameras become more capable, lightweight, and affordable, such techniques are increasingly attractive for use in teaching or in field situations.  
+
+Calibration of multiple cameras and using them to reconstruct position can be nontrival.  To use multiple cameras to reconstruct 3D positions requires knowledge of the cameras' intrinsic parameters, such as focal length, principal point, and distortion coefficients.  It also requires knowledge of the extrinsic parameters: the relative positions and orientations of the cameras with respect to one another. Finally, 3D reconstruction generally requires knowing that the frames are synchronized in time.  While a number of tools exist to actually perform the calibration (Borguet, Theriault et al) they can still be daunting to general users.
+
+In this paper, we provide a simple work flow and tools aimed specifically at low cost 3D reconstruction using multiple consumer-grade cameras (specifically, the GoPro Hero 3 series; although we have used the techniques here with Flip MinoHD and various models of digital SLR cameras).  To ease adoption of such techniques, we provide a database of calibrations; simple tools for obtaining the intrinsics from printed patterns; and methods for obtaining audio synchronization, wand tracking (and keypoint detection?) used to obtain extrinsics in the field. Our goal in this paper is simplify the employment of 3D reconstruction techniques so that they may be used in ecological field studies, undergraduate teaching of biomechanics, etc etc etc. 
+
+\subsection*{How does 3D reconstruction work in a nutshell?}
+\subsection*{Ecologist-proof roadmap of how to set up to do it}
 
 \section*{Methods and materials}
 \subsection*{Cameras}
@@ -48,6 +57,9 @@ Introduction here. A citation here \citep{Theriault:2014}.
 \section*{Results and discussion}
 \subsection*{Simple lab example}
 \subsection*{Simple field example}
+
+\section*{Acknowledgements}
+Thank you everyone.
 
 \bibliography{gopro}
 \end{document}
