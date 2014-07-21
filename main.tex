@@ -9,6 +9,14 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{lineno} % for review only
 
+% define some things here
+\newcommand{\argus}{\texttt{argus}}
+\newcommand{\detectpatterns}{\texttt{argus\_detect\_patterns}}
+\newcommand{\simplified}{\texttt{argus\_simplified}}
+\newcommand{\pipcommand}{\texttt{sudo pip install argus}}
+\newcommand{\argusrepo}{\url{ssh://hg@bitbucket.org/devangel77b/argus}}
+\newcommand{\matlabtoolbox}{add link here}
+
 \title{Fun things you can do with a bunch of GoPros}
 
 \author[1,2]{Brandon Jackson \thanks{author for correspondence: brandon.e.jackson@gmail.com}}
@@ -49,8 +57,45 @@ In this paper, we provide a simple work flow and tools aimed specifically at low
 
 \section*{Methods and materials}
 \subsection*{Cameras}
+We demonstrate these methods using GoPro Hero3 Black cameras (GoPro, Santa Cruz, CA), mounted in stock cases (serial numbers), as well as Nikon D300S DSLR with 24 mm lenses. 
+
 \subsection*{Software tools}
+Several software tools exist for providing camera calibrations, including (citations).  Here we present a simplified set of tools optimized for ease of use: the Python \argus\ package (\argusrepo, or install using \pipcommand) and the Matlab (NAME) toolbox (\matlabtoolbox). 
+
 \subsection*{Laboratory calibration of camera intrinsics}
+An online library of camera intrinsic parameters is provided (HERE).  The Python \argus\ package can be used to obtain a laboratory calibration for camera intrinsics, as a check or for a configuration not provided. First, a test pattern (LINK) is printed and firmly affixed to a flat surface; we typically use either a (dimensions) chessboard pattern or a (dimensions) dot pattern (see Figure X).  The camera is set for the desired resolution, frame rate, and field of view and the patterns are filmed; the use of an external monitor can aid the process.  
+
+The resulting video is analyzed frame by frame to locate the patterns, using the \detectpatterns\ script.  The detected patterns are used to iteratively find a set of intrinsic parameters that minimizes the root mean squared error (rmse) of the projection; this is accomplished with the \simplified\ script.  We have configured the \simplified\ script to work for most typical applications; additional scripts are provided in \argus\ to provide fine control over the order of parameter optimization and the detailed stage-by-stage minimization search.
+
+Move to results: As an example of a calibration, we filmed a (dimensions) pattern using a GoPro Hero3 Black camera (figure X).  The resulting calibration data is given in Table X. To examine the spread in calibration values, we repeated the calibration 2000 times using 30 patterns for each replicate. The best rmse value falls within the 25th-75th interquartile range and is near the median value for the best 200 calibrations, suggesting we are not in a local minimum and that the calibration parameters are significant...   
+
+\begin{figure}
+\caption{(a) Example video frame for laboratory calibration of GoPro Hero3 Black camera intrinsics showing (dimensions) pattern.  (b) Pattern detected using the \detectpatterns\ script.}
+\label{fig:labcal1}
+\end{figure}
+
+\begin{table}
+\caption{Results of laboratory calibration of GoPro Hero3 Black camera intrinsics using 1000 replicates, showing best rmse and the median, 25th and 75th percentile values of the top 100 solutions. }
+\label{tab:labcal2}
+\begin{center}
+\begin{tabular}{lcccc}
+parameter & best & 25\% & median & 75\% \\
+\cline{1-5}
+focal length $f$, pixels & & & &\\
+principal point $c_x$, pixels & & & & \\
+principal point $c_y$, pixels & & & & \\
+aspect ratio $AR$ & 1 & 1 & 1 & 1\\
+skew $s$ & 0 & 0 & 0 & 0 \\
+radial $k_1$ & & & & \\
+radial $k_2$ & & & & \\
+tangential $t_1$ & 0 & 0 & 0 & 0 \\
+tangential $t_2$ & 0 & 0 & 0 & 0 \\
+radial $k_3$ & & & & \\
+\end{tabular}
+\end{center}
+\end{table}
+
+
 \subsection*{Field deployment and field calibration of camera extrinsics}
 \subsection*{3D reconstruction}
 
