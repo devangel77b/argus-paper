@@ -75,24 +75,25 @@ Move to results: As an example of a calibration, we filmed a (dimensions) patter
 \end{figure}
 
 \begin{table}
-\caption{Results of laboratory calibration of GoPro Hero3 Black camera intrinsics using 1000 replicates, showing best rmse and the median, 25th and 75th percentile values of the top 100 solutions. }
+\caption{Results of laboratory calibration of GoPro Hero3 Black camera intrinsics using 5000 replicates, showing best rmse and the median, 25th and 75th percentile values of the top 100 solutions? }
 \label{tab:labcal2}
 \begin{center}
 \begin{tabular}{lcccc}
 parameter & best & 25\% & median & 75\% \\
 \cline{1-5}
-focal length $f$, pixels & & & &\\
-principal point $c_x$, pixels & & & & \\
-principal point $c_y$, pixels & & & & \\
+focal length $f$, pixels & 1209 & & &\\
+principal point $c_x$, pixels & 639.5 & & & \\
+principal point $c_y$, pixels & 359.5 & & & \\
 aspect ratio $AR$ & 1 & 1 & 1 & 1\\
 skew $s$ & 0 & 0 & 0 & 0 \\
-radial $k_1$ & & & & \\
-radial $k_2$ & & & & \\
+radial $k_1$ & -0.3427 & & & \\
+radial $k_2$ & 0.1306 & & & \\
 tangential $t_1$ & 0 & 0 & 0 & 0 \\
 tangential $t_2$ & 0 & 0 & 0 & 0 \\
-radial $k_3$ & & & & \\
+radial $k_3$ & 0 & & & \\
 \end{tabular}
 \end{center}
+note: $c_x$, $c_y$, $AR$, $s$, $t_1$ and $t_2$, and $k_3$ held fixed during optimization.
 \end{table}
 
 
