@@ -9,5 +9,7 @@ syntax: glob
 *.cls
 *.synctex.gz
 figures/*
+*.dropbox
+*.DS_Store
 
 syntax: regexp
