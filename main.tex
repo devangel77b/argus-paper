@@ -1,7 +1,9 @@
 \documentclass[fleqn,10pt]{wlpeerj}
 %% DE created stub file June 30, 2014 initially set up for PeerJ
-%% Have at - change whatever you like.
 %% Text is being tracked using Mercurial for revision control.  
+
+%% DE: Doesn't PeerJ not do papers that are purely methods??? 
+
 
 % some packages here 
 \usepackage{graphicx}
@@ -18,8 +20,9 @@
 \newcommand{\matlabtoolbox}{add link here}
 
 %\title{Fun things you can do with a bunch of GoPros} % interim
-\title{3D to the People} % Ty
-
+\title{3D for the people: motion capture in the field with consumer-grade cameras and open-source software} 
+% Ty
+% DE updated with Brandon's poster title
 
 \author[1,2]{Brandon Jackson \thanks{author for correspondence: brandon.e.jackson@gmail.com}}
 \author[2]{Dennis Evangelista}
@@ -51,37 +54,50 @@ Ecological, behavioral, and biomechanical studies often need to quantify movemen
 
 \section*{Introduction}
 
-Introduction here. Citations here \citep{Bradski:2008}. 
+Citations like this: \citep{Bradski:2008,Theriault:2014,Hartley:xxxx}. 
 
 Much of animal behavior, evolution, and ecology involves movement within complex three-dimensional (3D) environments.  Yet, few studies have tracked 3D movements of animals in natural settings, particularly animals in flight.  High-speed videography is a staple tool in studies of animal locomotion, and has led to foundational insight on mechanics of locomotion, the evolution of novel locomotor strategies, and recently the mechanics of non-steady and maneuvering performances.  
 
 Laboratory-based studies of animal locomotion are necessarily limited in scope.  Most studies focus on single individuals of limited species performing standardized locomotor behaviors \ty{in a confined setting}.  The findings, while providing incredible insight to many aspects of animal locomotion, are therefore similarly limited in scope.  Some species are inherently more difficult than others to maintain in captivity, or to train to perform the requested task in a repeatable manner.  Some behaviors (e.g. predator-prey interactions, courtship, large group behaviors), on the other hand, are inherently \ty{difficult or }impossible to measure within the confines of a laboratory setting.  
 
-A recently published \ty{protocol and associated software package} allows for researchers to overcome some of the previous hurdles to 3D videography in field settings \citep{Theriault:2014}.  Rather than using a carefully constructed calibration frame for calibration, the structure-from-motion technique depends on any objects in the field of view of multiple cameras, an object of known length (a “wand”), and an object \ty{or scene feature} providing orientation to global axes such as an object accelerating with gravity, a plumb line, or a horizontal plane.  \ty{The open source software implementations, provided in Python and MATLAB, represents a low-cost alternative to several commercially available packages.  However, the workflow described in Theriault et al. (\citeyear{Theriault:2014}) still assumes the use of costly laboratory grade cameras that provide hardware support for synchronizing shutter events among multiple cameras. These hardware requirements present an additional financial hurdle. Furthermore, laboratory grade cameras are rarely designed to be used in the field and are often senstive to dust, water and mechanical forces and have high electrical power requirements.}
+A recently published \ty{protocol and associated software package} allows for researchers to overcome some of the previous hurdles to 3D videography in field settings \citep{Theriault:2014}.  Rather than using a carefully constructed calibration frame for calibration, the structure-from-motion technique depends on any objects in the field of view of multiple cameras, an object of known length (a “wand”), and an object \ty{or scene feature} providing orientation to global axes such as an object accelerating with gravity, a plumb line, or a horizontal plane.  \ty{The open source software implementations, provided in Python and MATLAB, represent a low-cost alternative to several commercially available packages.  However, the workflow described in Theriault et al.~(\citeyear{Theriault:2014}) still assumes the use of costly laboratory grade cameras that provide hardware support for synchronizing shutter events among multiple cameras. These hardware requirements present an additional financial hurdle. Furthermore, laboratory grade cameras are rarely designed to be used in the field and are often sensitive to dust, water and mechanical forces, \dennis{may be quite heavy, and often require external power and cabling that limit where they can be deployed.}}
 
-Recent technological advancements, particularly related to expanding markets of extreme sports, have led to a vast expansion of high-quality consumer grade video and \ty{digital single-lens reflex (DSLR) cameras capable of moderately high-speed ($\le$250 frames per second) in color at resolutions comparable to or better than common laboratory cameras from 5 years ago. Furthermore, these consumer grade systems are much cheaper than their laboratory equivalents, are designed for stand-alone operation in outdoor field settings and are designed for continuous recording. However, they also lack hardware support for frame synchronization among many cameras - a key requirement for 3D videography according to Theriault et al. \cite{Theriault:2014} - and also often have wide angle, high distortion lenses that make camera calibration challenging.} The purpose of this work is to provide a set of instructions and software tools to aid researchers in integrating consumer-grade cameras into a relatively inexpensive and speedy workflow for 3D videography\ty{ in field or laboratory settings}.  
+Recent technological advancements, particularly related to expanding markets of extreme sports, have led to a vast expansion of high-quality consumer grade video and \ty{digital single-lens reflex (DSLR) cameras capable of moderately high-speed ($\le$250 frames per second) in color at resolutions comparable to or better than common laboratory cameras from five years ago. Furthermore, these consumer grade systems are much \dennis{more affordable} than their laboratory equivalents, are designed for stand-alone operation in outdoor field settings and are designed for continuous recording. However, they also lack hardware support for frame synchronization among many cameras, \dennis{thus, some other means of obtaining frame synchronization is necessary \citep{Theriault:2014}.  Many of the commercial-grade video cameras also have} wide angle, high distortion lenses that make camera calibration challenging.} The purpose of this work is to provide a set of instructions and software tools to aid researchers in integrating consumer-grade cameras into a relatively inexpensive and speedy workflow for 3D videography\ty{ in field or laboratory settings}.  %kind of repeats the next sentence?
 
-In this paper, we provide a simple work flow and tools aimed specifically at \ty{facilitating 3D videography} using multiple consumer-grade cameras (specifically, the GoPro Hero 3 series; although we have used the techniques here with Flip MinoHD and various models of GoPro Heros and DSLR cameras).  \ty{Our tools include a database of camera lens calibration parameters; simple tools for obtaining the lens parameters for cameras not in the database; methods synchronizing multiple cameras based on audio channel information; along with wand tracking (and keypoint detection?) to complete a 3D calibration.} Our goal in this paper is simplify the employment of 3D reconstruction techniques so that they may be used in ecological field studies, undergraduate teaching of biomechanics, \ty{laboratory research in settings without the funding support for pupose-built laboratory cameras} etc etc etc. 
+In this paper, we provide a simple work flow and tools aimed specifically at \ty{facilitating 3D videography} using multiple consumer-grade cameras (specifically, the GoPro Hero 3 \dennis{and 4} series; although we have used the techniques here with Flip MinoHD and with Canon and Nikon DSLR cameras).  \ty{Our tools include a database of camera lens calibration parameters; simple tools for obtaining the lens parameters for cameras not in the database; methods synchronizing multiple cameras based on audio channel information; along with wand tracking (and keypoint detection?) to complete a 3D calibration.} Our goal in this paper is simplify the employment of 3D reconstruction techniques so that they may be used in ecological field studies, undergraduate teaching of biomechanics, \ty{laboratory research in settings without the funding support for purpose-built laboratory cameras} etc etc etc. 
 
-\subsection*{How does 3D reconstruction work in a nutshell?}
-Calibration of multiple cameras and using them to reconstruct position can be nontrival.  To use multiple cameras to reconstruct 3D positions requires knowledge of the cameras' intrinsic parameters, such as the lens focal length, principal point, and distortion coefficients.  It also requires knowledge of the extrinsic parameters: the relative positions and orientations of the cameras with respect to one another. Finally, 3D reconstruction generally requires knowing that the frames are synchronized in time.  While a number of tools exist to actually perform the calibration (Borguet, Theriault et al) they can still be daunting to general users.
+\subsection*{Review of 3D reconstruction}
+%Calibration of multiple cameras and using them to reconstruct position can be nontrival.  To use multiple cameras to reconstruct 3D positions requires knowledge of the cameras' intrinsic parameters, such as the lens focal length, principal point, and distortion coefficients.  It also requires knowledge of the extrinsic parameters: the relative positions and orientations of the cameras with respect to one another. Finally, 3D reconstruction generally requires knowing that the frames are synchronized in time.  While a number of tools exist to actually perform the calibration (Borguet, Theriault et al) they can still be daunting to general users.
+\dennis{To reconstruct 3D points from points tracked in multiple videos requires knowledge of the cameras' optics (e.g.~the intrinsic parameters, such as focal length and distortion coefficients) and their locations, translation and rotation, relative to one another (e.g.~the extrinsic parameters).  In addition, the tracked points in each video must be adjusted so that they are synchronized in time.  With these pieces of information, it is possible to solve for 3D points that minimize the reconstruction error using a number of algorithms \citep{Hedrick:2008, Borguet, Lourakis, Theriault:2014}.  The methods may be thought of as triangulating an object's position in 3D space using the images in each camera view; thus it is clear why they require knowledge of the camera optics, relative positions, and some means of synchronization.}    
 
-Camera intrinsic parameters define...
+\dennis{The camera intrinsic parameters include focal length (how ``long'' or ``wide'' the lens is as well as the size and resolution of the sensor), the principal point (where the center of the lens is relative to the sensor), and a number of radial and tangential distortion coefficients that address image warping from the camera geometry. For the workflow presented here, these are obtained separately from the field through filming of a chessboard or dot calibration pattern using a tool of one's choosing (Borguet or the free-software work here).}  
 
-Full 3D reconstruction also requires knowledge of the relative positions an orientations of multiple cameras..details on calculating camera intrinsics, wand calibrations, and the need for auto wand tracking
+\dennis{The camera extrinsic parameters are the relative translation and rotation between cameras.  For the work presented here and as in \citep{Theriault:2014}, these are obtained from three sources: 1) fixed points within a scene that can be matched among camera views; 2) points on a wand of known length, moved through the volume of interest as part of the field calibrations; and 3) other known points that can be matched among camera views, such as the study animal of interest. Fixed points can be obtained by lucky use of existing features of the site such as buildings, trees, field assistants with distinctive clothing, or purposely installed markers (though with trees, we recommend care be taken as corresponding trees can be hard to identify without notes or hints such as flagging tape or markings).  Adjustment of the calibration using the digitized points of interest is accomplished using Sparse Bundle Adjustment as described in \citep{Lourakis, Theriault:2014}.  These can be aided by smart use of a wand of known length, and we will describe several techniques and additional tools for automatic wand recognition? here.} 
 
-Lastly, 3D reconstruction works by using camera intrinsics and extrinics to triangulate an object's position in 3D space based on the images in each camera.  If the object of interest is moving, the images from each camera must be taken at the same time. While laboratory grade cameras include frame and exposure synchronization functions in hardware, consumer-grade cameras generally lack this ability in any form.  
-\subsection*{Ecologist-proof roadmap of how to set up to do it}
+\dennis{If the objects of interest are moving, the points used for reconstruction must be taken from the same instant in time.  While laboratory-grade high speed video cameras often include hardware connections for frame synchronization, consumer-grade video cameras generally lack such connections. An alternate means of synchronization is to identify the frame or sub-frame offset between cameras and adjust the digitized points accordingly.  This can be accomplished with a visual signal such as a flash, clapboard, or blinking light; or here we present a more precise, repeatable, and easy-to-automate technique using the audio track as a synchronization signal.}  
+
+\subsection*{Ecologist's roadmap}
+
+To use these cameras in a field situation:
+\begin{enumerate}
+\item{Obtain intrinsic calibration of cameras in lab, before field use}
+\item{Setup cameras in the field and record setup details}
+\item{Obtain time synchronization information using audio channel}
+\item{Provide several wand tosses for extrinsic calibration}
+\item{Obtain vertical reference through a rock toss, vertical object, horizon, etc.}
+\end{enumerate}
+
+When these items are completed, it should be possible to obtain a calibration.  
 
 \section*{Methods and materials}
 \subsection*{Cameras}
-We demonstrate these methods using GoPro Hero3 Black cameras (GoPro, Santa Cruz, CA, USA), mounted in stock cases (serial numbers), as well as Nikon D300S DSLR with 24 mm lenses. 
+Here, we demonstrate these methods using GoPro Hero3 Black and Hero4 Black cameras (GoPro, Santa Cruz, CA, USA), mounted in stock cases (serial numbers).  We have also used the methods with Flip MinoHD, Nikon D300S, and Canon EOS 6D and have assisted others working with other GoPro models and with other lenses on various lab-grade video camera bodies.
 
 \subsection*{Software tools}
 Several software tools exist for providing camera calibrations, including (citations).  Here we present a simplified set of tools optimized for ease of use: the Python \argus\ package (\argusrepo, or install using \pipcommand) and the Matlab (NAME) toolbox (\matlabtoolbox). % are we still doing parallel Python and MATLAB workflows?  Python is definitely further along at this time and will probably be more feature rich even if we build in parallel -Ty 
 
 \subsection*{Laboratory calibration of camera intrinsics}
-An online library of camera intrinsic parameters is provided (HERE).  The Python \argus\ package can be used to obtain a laboratory calibration for camera intrinsics, as a check or for a configuration not provided. First, a test pattern (LINK) is printed and firmly affixed to a flat surface; we typically use either a (dimensions) chessboard pattern or a (dimensions) dot pattern (see Figure X).  The camera is set for the desired resolution, frame rate, and field of view and the patterns are filmed; the use of an external monitor can aid the process.  
+An online library of camera intrinsic parameters is provided (HERE).  The Python \argus\ package can be used to obtain a laboratory calibration for camera intrinsics, as a check or for a configuration not provided. First, a test pattern (LINK) is printed and firmly affixed to a flat surface; we typically use either a \num{10 x 7}, \SI{2}{\centi\meter} spacing chessboard pattern or a \num{12 x 9}, \SI{2}{\centi\meter} spacing dot pattern (see Figure X).  The camera is set for the desired resolution, frame rate, and field of view and the patterns are filmed; the use of an external monitor can aid the process.  During this step, it is important to move the pattern so that several different complete views (showing all the points) are obtained, spanning the entire area of the sensor. The pattern should be rotated slightly, to avoid having all the views coplanar, although large rotations can confuse the automatic detection routines.  At very high frame rates, care must be taken to keep the pattern moving, as having a large number of views that are the same may cause the intrinsic calibration to lock into a poor solution.  
 
 The resulting video is analyzed frame by frame to locate the patterns, using the \detectpatterns\ script.  The detected patterns are used to iteratively find a set of intrinsic parameters that minimizes the root mean squared error (rmse) of the projection; this is accomplished with the \simplified\ script.  We have configured the \simplified\ script to work for most typical applications; additional scripts are provided in \argus\ to provide fine control over the order of parameter optimization and the detailed stage-by-stage minimization search.
 
@@ -114,13 +130,21 @@ radial $k_3$ & 0 & & & \\
 note: $c_x$, $c_y$, $AR$, $s$, $t_1$ and $t_2$, and $k_3$ held fixed during optimization.
 \end{table}
 
-
-\subsection*{Field deployment and field calibration of camera extrinsics}
+\subsection*{Field deployment recommendations}
+\subsection*{Field calibration of camera extrinsics}
+\subsection*{Obtaining time synchronization information in the field}
 \subsection*{3D reconstruction}
 
 \section*{Results and discussion}
+
 \subsection*{Simple lab example}
+% This one Dennis take quick shot of ball toss with Hero 4s? perhaps illustrating auto wand recognition? 
+
 \subsection*{Simple field example}
+% This one Brandon provides from poster?
+
+\subsection*{Guidance for working underwater}
+% Paste in stuff we told Glenna
 
 \section*{Acknowledgements}
 Thank you everyone.
