@@ -90,14 +90,18 @@ To use these cameras in a field situation:
 When these items are completed, it should be possible to obtain a calibration.  
 
 \section*{Methods and materials}
-\subsection*{Cameras}
+\subsection*{Cameras and equipment}
 Here, we demonstrate these methods using GoPro Hero3 Black and Hero4 Black cameras (GoPro, Santa Cruz, CA, USA), mounted in stock cases (serial numbers).  We have also used the methods with Flip MinoHD, Nikon D300S, and Canon EOS 6D and have assisted others working with other GoPro models and with other lenses on various lab-grade video camera bodies.
+
+List other equipment here but detail it further on?
 
 \subsection*{Software tools}
 Several software tools exist for providing camera calibrations, including (citations).  Here we present a simplified set of tools optimized for ease of use: the Python \argus\ package (\argusrepo, or install using \pipcommand) and the Matlab (NAME) toolbox (\matlabtoolbox). % are we still doing parallel Python and MATLAB workflows?  Python is definitely further along at this time and will probably be more feature rich even if we build in parallel -Ty 
 
 \subsection*{Laboratory calibration of camera intrinsics}
-An online library of camera intrinsic parameters is provided (HERE).  The Python \argus\ package can be used to obtain a laboratory calibration for camera intrinsics, as a check or for a configuration not provided. First, a test pattern (LINK) is printed and firmly affixed to a flat surface; we typically use either a \num{10 x 7}, \SI{2}{\centi\meter} spacing chessboard pattern or a \num{12 x 9}, \SI{2}{\centi\meter} spacing dot pattern (see Figure X).  The camera is set for the desired resolution, frame rate, and field of view and the patterns are filmed; the use of an external monitor can aid the process.  During this step, it is important to move the pattern so that several different complete views (showing all the points) are obtained, spanning the entire area of the sensor. The pattern should be rotated slightly, to avoid having all the views coplanar, although large rotations can confuse the automatic detection routines.  At very high frame rates, care must be taken to keep the pattern moving, as having a large number of views that are the same may cause the intrinsic calibration to lock into a poor solution.  
+An online library of camera intrinsic parameters is provided (HERE).  The Python \argus\ package can be used to obtain a laboratory calibration for camera intrinsics, as a check or for a configuration not provided. First, a test pattern (LINK) is printed and firmly affixed to a flat surface; \dennis{we typically use either a \num{10 x 7}, \SI{2}{\centi\meter} spacing chessboard pattern or a \num{12 x 9}, \SI{2}{\centi\meter} spacing dot pattern (see Figure X). For convenience Larger patterns can easily be printed (Staples, OfficeDepot, FedEx Kinkos) and mounted on posterboard; patterns can also be painted or transferred onto other surfaces such as dry erase board, or acrylic for underwater use, or printed on card stock and laminated.}  
+
+\dennis{The camera is set for the desired resolution, frame rate, and field of view and the patterns are filmed; the use of an external monitor can aid the process.  During this step, it is important to move the pattern so that several different complete views (showing all the points) are obtained, spanning the entire area of the sensor. The pattern should be rotated slightly, to avoid having all the views coplanar, although large rotations can confuse the automatic detection routines.  At very high frame rates, care must be taken to keep the pattern moving, as having a large number of views that are the same may cause the intrinsic calibration to lock into a poor solution.}  
 
 The resulting video is analyzed frame by frame to locate the patterns, using the \detectpatterns\ script.  The detected patterns are used to iteratively find a set of intrinsic parameters that minimizes the root mean squared error (rmse) of the projection; this is accomplished with the \simplified\ script.  We have configured the \simplified\ script to work for most typical applications; additional scripts are provided in \argus\ to provide fine control over the order of parameter optimization and the detailed stage-by-stage minimization search.
 
@@ -131,20 +135,35 @@ note: $c_x$, $c_y$, $AR$, $s$, $t_1$ and $t_2$, and $k_3$ held fixed during opti
 \end{table}
 
 \subsection*{Field deployment recommendations}
-\subsection*{Field calibration of camera extrinsics}
+\dennis{How to setup cameras. Cite \citep{Theriault:2014}.} 
+
+\subsection*{Field calibration filming}
+\dennis{This part needs to describe wands and possibly what to do when you cant get good wand tosses.} 
+
 \subsection*{Obtaining time synchronization information in the field}
-\subsection*{3D reconstruction}
+\dennis{This part needs to describe walkie talkies, sound sources, etc.}
 
-\section*{Results and discussion}
+\subsection*{Final calibration and 3D reconstruction}
+\dennis{What to do with it all when you get it back to lab}
 
+
+
+
+
+\section*{Results}
 \subsection*{Simple lab example}
-% This one Dennis take quick shot of ball toss with Hero 4s? perhaps illustrating auto wand recognition? 
+\dennis{This one Dennis take quick shot of ball toss with Hero 4s? perhaps illustrating auto wand recognition?}
 
 \subsection*{Simple field example}
-% This one Brandon provides from poster?
+\brandon{This one Brandon provides from poster?}
 
-\subsection*{Guidance for working underwater}
-% Paste in stuff we told Glenna
+\section*{Discussion}
+\dennis{Maybe provide additional guidance for particular situations here?}
+\subsection*{Working underwater}
+% Paste in calibration stuff we told Glenna, camera fogging, consider a rig for ease of handling
+
+\subsection*{Thermal limitations}
+\subsection*{Field expedients and pro-tips}
 
 \section*{Acknowledgements}
 Thank you everyone.
