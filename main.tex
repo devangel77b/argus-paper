@@ -94,9 +94,10 @@ When these items are completed, it should be possible to obtain a calibration.
 Here, we demonstrate these methods using GoPro Hero3 Black and Hero4 Black cameras (GoPro, Santa Cruz, CA, USA), mounted in stock cases (serial numbers).  We have also used the methods with Flip MinoHD, Nikon D300S, and Canon EOS 6D and have assisted others working with other GoPro models and with other lenses on various lab-grade video camera bodies.
 
 List other equipment here but detail it further on?
+\brandon{
 
 \subsection*{Software tools}
-Several software tools exist for providing camera calibrations, including (citations).  Here we present a simplified set of tools optimized for ease of use: the Python \argus\ package (\argusrepo, or install using \pipcommand) and the Matlab (NAME) toolbox (\matlabtoolbox). % are we still doing parallel Python and MATLAB workflows?  Python is definitely further along at this time and will probably be more feature rich even if we build in parallel -Ty 
+Several software tools exist for providing camera calibrations, including (citations).  Here we present a simplified set of tools optimized for ease of use: the Python \argus\ package (\argusrepo, or install using \pipcommand) and the Matlab (NAME) toolbox (\matlabtoolbox). % are we still doing parallel Python and MATLAB workflows?  Python is definitely further along at this time and will probably be more feature rich even if we build in parallel -Ty %We can't do fully parallel in MATLAB since the computer vision stuff is hidden in a toolbox that might be very rare.  The audiosync works well in MATLAB, and that might be enough for some people who are already comfortable with DLTdv5, and who can download our camera profiles for their cameras.
 
 \subsection*{Laboratory calibration of camera intrinsics}
 An online library of camera intrinsic parameters is provided (HERE).  The Python \argus\ package can be used to obtain a laboratory calibration for camera intrinsics, as a check or for a configuration not provided. First, a test pattern (LINK) is printed and firmly affixed to a flat surface; \dennis{we typically use either a \num{10 x 7}, \SI{2}{\centi\meter} spacing chessboard pattern or a \num{12 x 9}, \SI{2}{\centi\meter} spacing dot pattern (see Figure X). For convenience Larger patterns can easily be printed (Staples, OfficeDepot, FedEx Kinkos) and mounted on posterboard; patterns can also be painted or transferred onto other surfaces such as dry erase board, or acrylic for underwater use, or printed on card stock and laminated.}  
@@ -135,7 +136,8 @@ note: $c_x$, $c_y$, $AR$, $s$, $t_1$ and $t_2$, and $k_3$ held fixed during opti
 \end{table}
 
 \subsection*{Field deployment recommendations}
-\dennis{How to setup cameras. Cite \citep{Theriault:2014}.} 
+\dennis{How to setup cameras. Cite \citep{Theriault:2014}.}
+ 
 
 \subsection*{Field calibration filming}
 \dennis{This part needs to describe wands and possibly what to do when you cant get good wand tosses.} 
