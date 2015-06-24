@@ -11,5 +11,7 @@ syntax: glob
 figures/*
 *.dropbox
 *.DS_Store
+*.zip
+1080_120N/*
 
 syntax: regexp
