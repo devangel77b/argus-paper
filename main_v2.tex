@@ -251,8 +251,11 @@ Lastly, we recommend that calibration data be obtained at the beginning and end 
 \subsection*{Intrinsic calibration}
 We filmed a $9 \times 12$ dot pattern, \SI{2}{\centi\meter} spacing, using a GoPro Hero3 Black camera (Figure~\ref{fig:labcal1}).  The resulting calibration data are given in Table~\ref{tab:labcal2}. To examine the spread in calibration values, we repeated the calibration 2000 times using 30 patterns for each replicate. The best rmse value falls within the 25th-75th interquartile range and is near the median value for the best 200 calibrations, suggesting we are not in a local minimum and that the calibration parameters are significant.  In the undistorted camera image, the visible bulge caused by lens distortion is decreased. 
 
+\dennis{This appears to be for GoPro Hero3 720p 60 fps narrow?  Is that the case we want to use?  Should we match the indoor lab test, or the field shot?}
+
 \begin{figure}
-\caption{(a) Example video frame showing acquisition of GoPro Hero3 Black camera lens intrinsics from a dot grid.  (b) Pattern detected using the \detectpatterns\ Python script. (c) Example undistorted video frame. PLACEHOLDER}%
+\caption{(a) Example video frame showing acquisition of GoPro Hero3 Black camera lens intrinsics from a dot grid.  (b) Pattern detected using the \detectpatterns\ Python script. (c) Example undistorted video frame. PLACEHOLDER. \dennis{Please specify which camera / settings you want me to use here.}
+}%
 %\dennis{What does this one want to show? Good practice for filming board shots}
 \label{fig:labcal1}
 % PLACEHOLDER ONLY
@@ -262,7 +265,8 @@ C later
 \end{figure}
 
 \begin{table}
-\caption{Results of laboratory calibration of GoPro Hero3 Black camera intrinsics using 5000 replicates, showing best rmse and the median, 25th and 75th percentile values of the top 100 solutions}
+\caption{Results of laboratory calibration of GoPro Hero3 Black camera intrinsics using 5000 replicates, showing best rmse and the median, 25th and 75th percentile values of the top 100 solutions. \dennis{This appears to be for GoPro Hero3 720p 60 fps narrow?  Is that the case we want to use?  Should we match the indoor lab test, or the field shot?}
+}
 \label{tab:labcal2}
 \begin{center}
 \begin{tabular}{lcccc}
