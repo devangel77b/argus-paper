@@ -101,7 +101,7 @@ Make scene alignment recordings\\
 \end{tabular}
 \end{table}
 
-The camera intrinsic parameters include focal length (how ``long'' or ``wide'' the lens is) as well as the size and resolution of the sensor, the principal point (where the optical center of the lens is relative to the sensor), and a number of radial and tangential distortion coefficients that address image warping relative to an ideal lens. For the workflow presented here, these parameters are obtained in the laboratory and need not be part of field recording.  Intrinsic parameters are determined from video recordings as a calibration pattern is swept through the field of view (refer to paper section?).  
+The camera intrinsic parameters include focal length (how ``long'' or ``wide'' the lens is) as well as the size and resolution of the sensor, the principal point (where the optical center of the lens is relative to the sensor), and a number of radial and tangential distortion coefficients that address image warping relative to an ideal lens. An alternate procedure involving an omnidirectional camera model may be used for very high distortion lenses such as fisheye lenses.  For the workflow presented here, these parameters are obtained in the laboratory and need not be part of field recording.  Intrinsic parameters are determined from video recordings as a calibration pattern is swept through the field of view (refer to paper section?).  
 %To accomplish this, the tools provided here include \texttt{argus\_simplified} and the graphical interface, argus-calib, which use the OpenCV libraries \citep{opencv} and are broadly compatible with the MATLAB camera calibration toolbox \citep{lour09}.  
 
 The camera extrinsic parameters are the relative translation and rotation among cameras.  For the work presented here, and as in \citep{Theriault:2014}, these are obtained from three sources: 1) fixed points within a scene that can be matched among camera views; 2) paired points on a wand of known length, moved through the volume of interest as part of the field calibrations; and 3) other known points that can be matched among camera views, such as the study animal(s) of interest. Fixed points can be obtained by use of existing features of the site such as buildings, trees, field assistants with distinctive clothing, or purposely installed markers (though with trees, we recommend care be taken as corresponding trees can be hard to identify without notes or hints such as flagging tape or markings).  Adjustment of the calibration using the digitized points of interest is accomplished using Sparse Bundle Adjustment as described in \citep{lour09, Theriault:2014}.  Points on the wand of known length provide a final check to scene scale and geometry and can also stand in for fixed points if a sufficient number are present. To assist this process, we provide several Python scripts for automatically identifying points on chessboards or on specially constructed colored wands. Wand and scene points may also be identified manually using \texttt{DLTdv5} \citep{Hedrick2008}, or using ImageJ (NIH, Bethesda, MD) (as described \citealp{Kane2012}). %(refer to paper section?)
@@ -241,7 +241,7 @@ Lastly, we recommend that calibration data be obtained at the beginning and end 
 \subsection*{Final calibration and 3D reconstruction}
 \brandon{What to do with it all when you get it back to lab. How low is low enough for wand score, RMSE, axis orthogonality? What to report?  Housekeeping best practices regarding calibrations.}
 
-
+\dennis{The software routines also include a basic capability to undistort using omnidirectional cameras \citep{Scaramuzza:2006, GetFromPranav}.  These are especially useful for very high distortion fisheye lenses and wide shooting modes, such as GoPro Hero4 Black 2.7k and 1440 wide modes.  In these cases, we recommend undistorting the raw videos before prior to digitization and analysis with other tools that employ pinhole camera models with radial and tangential distortion coefficients.}
 
 
 
@@ -374,6 +374,9 @@ Maybe provide additional guidance for particular situations here? Alternatively 
 
 \subsection*{Caveats about autotracking?}
 \dennis{Autotracking is hard and must often be done situation-specific... can help life by trying to maximize contrast (in brightness, color, or shape); keep the things that must be tracked similar to one another; simplify backgrounds; arrange cameras with non-parallel epipolars to maximize ability to resolve ambiguity.}
+
+\subsection*{Extreme distortion in fisheye and catadioptric lenses}
+\dennis{Or does this go here? The software routines also include a basic capability to undistort using omnidirectional cameras \citep{Scaramuzza:2006, GetFromPranav}.  These are especially useful for very high distortion fisheye lenses and wide shooting modes, such as GoPro Hero4 Black 2.7k and 1440 wide modes.  In these cases, we recommend undistorting the raw videos before prior to digitization and analysis with other tools that employ pinhole camera models with radial and tangential distortion coefficients.}
 
 \subsection*{Field expedients and pro-tips}
 \dennis{What to do if you don't have a nice chessboard or wand; what if your walkie talkie batteries die; calibration objects of opportunity; synchronization methods of opportunity; maybe OBE because we already incldue these elsewhere?}
