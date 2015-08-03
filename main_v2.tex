@@ -72,7 +72,7 @@ Better here? Our methods simplify the application of 3D reconstruction technique
 
 Many studies of biomechanics, animal behavior, evolution, and ecology require quantifying movement within complex three-dimensional (3D) environments.% 
 For example, in flight biomechanics, multi-camera high-speed videography is a staple tool for laboratory investigation of 3D animal movement \citep{citations} and has led to foundational insights on the mechanics of locomotion \citep{citations}, the evolution of novel locomotor strategies \citep{citations}, and performance in non-steady locomotion and maneuvering \citep{citations}.%this part looks like spot for us to cite outselves 
-However, laboratory-based studies of animal locomotion are necessarily limited in scope, and as yet, relatively fewer studies have attempted 3D tracking in natural settings \citep{Munk, Clark, Theriault:2014, Shelton14, sholtis2015, citations}.
+However, laboratory-based studies of animal locomotion are necessarily limited in scope, and as yet, relatively fewer studies have attempted 3D tracking in natural settings \citep{Munk:2015, Clark:2009, Theriault:2014, Shelton14, sholtis2015, citations}.
 
 Many studies focus on single individuals of select species performing standardized locomotor behaviors in a confined setting.  Such findings, while providing incredible insight to many aspects of animal locomotion, are therefore similarly limited in scope.  Moreover, some species are inherently more difficult than others to maintain in captivity, or require extensive training to perform tasks in a repeatable manner in an alien laboratory environment.  Some behaviors (e.g.~predator-prey interactions, courtship, behaviors within large groups, responses to large-scale environmental perturbations) are inherently difficult or impossible to measure within the confines of a laboratory setting. All these factors suggest that much progress in understanding locomotor behavior will come from measurement in more naturalistic settings. 
 
@@ -241,7 +241,7 @@ Lastly, we recommend that calibration data be obtained at the beginning and end 
 \subsection*{Final calibration and 3D reconstruction}
 \brandon{What to do with it all when you get it back to lab. How low is low enough for wand score, RMSE, axis orthogonality? What to report?  Housekeeping best practices regarding calibrations.}
 
-\dennis{The software routines also include a basic capability to undistort using omnidirectional cameras \citep{Scaramuzza:2006, GetFromPranav}.  These are especially useful for very high distortion fisheye lenses and wide shooting modes, such as GoPro Hero4 Black 2.7k and 1440 wide modes.  In these cases, we recommend undistorting the raw videos before prior to digitization and analysis with other tools that employ pinhole camera models with radial and tangential distortion coefficients.}
+\dennis{The software routines also include a basic capability to undistort using an omnidirectional camera model \citep{Scaramuzza:2006, urban2015improved} rather than a pinhole model with radial and tangential distortion coefficients.  These are especially useful for very high distortion fisheye lenses and wide shooting modes, such as GoPro Hero4 Black 2.7k and 1440 wide modes.  In these cases, we recommend undistorting the raw videos before digitization and analysis with other tools that employ pinhole camera models with radial and tangential distortion coefficients.}
 
 
 
@@ -376,7 +376,7 @@ Maybe provide additional guidance for particular situations here? Alternatively 
 \dennis{Autotracking is hard and must often be done situation-specific... can help life by trying to maximize contrast (in brightness, color, or shape); keep the things that must be tracked similar to one another; simplify backgrounds; arrange cameras with non-parallel epipolars to maximize ability to resolve ambiguity.}
 
 \subsection*{Extreme distortion in fisheye and catadioptric lenses}
-\dennis{Or does this go here? The software routines also include a basic capability to undistort using omnidirectional cameras \citep{Scaramuzza:2006, GetFromPranav}.  These are especially useful for very high distortion fisheye lenses and wide shooting modes, such as GoPro Hero4 Black 2.7k and 1440 wide modes.  In these cases, we recommend undistorting the raw videos before prior to digitization and analysis with other tools that employ pinhole camera models with radial and tangential distortion coefficients.}
+\dennis{Or does this go here? The software routines also include a basic capability to undistort using omnidirectional cameras \citep{Scaramuzza:2006, urban2015improved}.  These are especially useful for very high distortion fisheye lenses and wide shooting modes, such as GoPro Hero4 Black 2.7k and 1440 wide modes.  In these cases, we recommend undistorting the raw videos before prior to digitization and analysis with other tools that employ pinhole camera models with radial and tangential distortion coefficients.}
 
 \subsection*{Field expedients and pro-tips}
 \dennis{What to do if you don't have a nice chessboard or wand; what if your walkie talkie batteries die; calibration objects of opportunity; synchronization methods of opportunity; maybe OBE because we already incldue these elsewhere?}
